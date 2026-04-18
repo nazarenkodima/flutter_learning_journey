@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_learning_journey/lesson_11/homeworl_11_subtask1.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -22,7 +23,10 @@ class _HomeScreenState extends State<HomeScreen> {
 
   final List<Widget> _screens = List.generate(
     _listLenght,
-    (index) => Center(child: Text('Subtask ${index + 1}')),
+    (index) => switch (index) {
+      0 => const SubtaskOne(),
+      _ => Center(child: Text('Subtask ${index + 1}')),
+    },
   );
 
   final List<BottomNavigationBarItem> _items = List.generate(
