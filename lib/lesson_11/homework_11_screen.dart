@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_learning_journey/lesson_11/homework_11_subtask2.dart';
 import 'package:flutter_learning_journey/lesson_11/homework_11_subtask1.dart';
+import 'package:flutter_learning_journey/lesson_11/homework_11_subtask3.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -27,6 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
     (index) => switch (index) {
       0 => const SubtaskOne(),
       1 => const SubtaskTwo(),
+      2 => const SubtaskThree(),
       _ => Center(child: Text('Subtask ${index + 1}')),
     },
   );
