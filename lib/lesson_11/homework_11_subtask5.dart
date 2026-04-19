@@ -71,7 +71,7 @@ class _CardState extends State<_Card> {
       onTap: _toggle,
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 300),
-        // curve: Curves.fastOutSlowIn,
+        curve: Curves.easeIn,
         width: 300,
         height: 150,
         decoration: BoxDecoration(
