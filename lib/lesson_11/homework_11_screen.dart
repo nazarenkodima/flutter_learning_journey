@@ -3,6 +3,7 @@ import 'package:flutter_learning_journey/lesson_11/homework_11_subtask2.dart';
 import 'package:flutter_learning_journey/lesson_11/homework_11_subtask1.dart';
 import 'package:flutter_learning_journey/lesson_11/homework_11_subtask3.dart';
 import 'package:flutter_learning_journey/lesson_11/homework_11_subtask4.dart';
+import 'package:flutter_learning_journey/lesson_11/homework_11_subtask5.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -31,7 +32,8 @@ class _HomeScreenState extends State<HomeScreen> {
       1 => const SubtaskTwo(),
       2 => const SubtaskThree(),
       3 => const SubtaskFour(),
-      _ => Center(child: Text('Subtask ${index + 1}')),
+      4 => const SubtaskFive(),
+      _ => Placeholder(),
     },
   );
 
