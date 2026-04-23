@@ -8,31 +8,28 @@ class SubtaskFive extends StatelessWidget {
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.fromLTRB(47, 0, 46, 0),
-        child: SizedBox(
-          height: 659,
-          child: Center(
-            child: Column(
-              spacing: 8,
-              children: const [
-                Expanded(
-                  child: _Card(
-                    color: Color(0xFF096EEA),
-                    activeColor: Color(0xFF0756B8),
-                    alignment: Alignment.topLeft,
-                  ),
+        child: Center(
+          child: Column(
+            spacing: 8,
+            children: const [
+              Expanded(
+                child: _Card(
+                  color: Color(0xFF096EEA),
+                  activeColor: Color(0xFF0756B8),
+                  alignment: Alignment.topLeft,
                 ),
-                _Card(
-                  color: Color(0xFF08E900),
-                  activeColor: Color(0xFF06B800),
-                  alignment: Alignment.center,
-                ),
-                _Card(
-                  color: Color(0xFFEA090C),
-                  activeColor: Color(0xFFB8070A),
-                  alignment: Alignment.bottomRight,
-                ),
-              ],
-            ),
+              ),
+              _Card(
+                color: Color(0xFF08E900),
+                activeColor: Color(0xFF06B800),
+                alignment: Alignment.center,
+              ),
+              _Card(
+                color: Color(0xFFEA090C),
+                activeColor: Color(0xFFB8070A),
+                alignment: Alignment.bottomRight,
+              ),
+            ],
           ),
         ),
       ),
