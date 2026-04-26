@@ -4,11 +4,17 @@ import 'package:flutter_learning_journey/lesson_12/service_rating.dart';
 enum Vote { none, down, up }
 
 class Department {
-  Department({required this.title, required this.items, required this.votes});
+  Department({
+    required this.title,
+    required this.items,
+    required this.votes,
+    required this.commentController,
+  });
 
   final String title;
   final List<String> items;
   final List<Vote> votes;
+  final TextEditingController commentController;
 }
 
 class DepartmentCard extends StatelessWidget {
@@ -48,6 +54,16 @@ class DepartmentCard extends StatelessWidget {
                 onChanged: (vote) => onVoteChanged(i, vote),
               ),
             ),
+          TextField(
+            controller: department.commentController,
+            decoration: InputDecoration(
+              hintText: 'Розкажіть докладніше',
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(8),
+                borderSide: BorderSide(color: Color(0x3D202124)),
+              ),
+            ),
+          ),
         ],
       ),
     );
