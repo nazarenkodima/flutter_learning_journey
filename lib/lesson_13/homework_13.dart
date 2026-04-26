@@ -71,6 +71,7 @@ class TrainingExample1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      alignment: .topRight,
       height: 300,
       width: 300,
       color: Colors.green,
