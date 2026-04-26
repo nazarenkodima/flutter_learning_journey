@@ -17,9 +17,7 @@ class RatingCard extends StatelessWidget {
           bottomLeft: Radius.circular(24),
           bottomRight: Radius.circular(24),
         ),
-        boxShadow: [
-          BoxShadow(color: Color(0x0F000000), offset: Offset(0, 1)),
-        ],
+        boxShadow: [BoxShadow(color: Color(0x0F000000), offset: Offset(0, 1))],
       ),
       child: FittedBox(
         fit: BoxFit.scaleDown,
@@ -27,10 +25,7 @@ class RatingCard extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: List.generate(
             5,
-            (i) => Rating(
-              active: i < rating,
-              onTap: () => onChanged(i + 1),
-            ),
+            (i) => Rating(active: i < rating, onTap: () => onChanged(i + 1)),
           ),
         ),
       ),
