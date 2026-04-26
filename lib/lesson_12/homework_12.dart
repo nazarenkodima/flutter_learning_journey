@@ -3,6 +3,7 @@ import 'package:flutter_learning_journey/lesson_12/department_card.dart';
 import 'package:flutter_learning_journey/lesson_12/rating_card.dart';
 import 'package:flutter_learning_journey/lesson_12/section_title.dart';
 import 'package:flutter_learning_journey/lesson_12/button.dart';
+import 'package:flutter_learning_journey/lesson_12/comment_input.dart';
 
 class Forms extends StatefulWidget {
   const Forms({super.key});
@@ -63,6 +64,13 @@ class _FormsState extends State<Forms> {
               );
             }),
             SectionTitle(title: 'Є що додати?', position: .left),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: CommentInput(
+                controller: feedbackController,
+                hintText: 'Поділіться загальним враженням',
+              ),
+            ),
           ],
         ),
       ),
@@ -77,6 +85,7 @@ class _FormsState extends State<Forms> {
               );
             }
             debugPrint('rating=$_rating');
+            debugPrint('feedback=${feedbackController.text}');
           },
         ),
       ),

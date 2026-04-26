@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_learning_journey/lesson_12/comment_input.dart';
 import 'package:flutter_learning_journey/lesson_12/service_rating.dart';
 
 enum Vote { none, down, up }
@@ -54,15 +55,9 @@ class DepartmentCard extends StatelessWidget {
                 onChanged: (vote) => onVoteChanged(i, vote),
               ),
             ),
-          TextField(
+          CommentInput(
             controller: department.commentController,
-            decoration: InputDecoration(
-              hintText: 'Розкажіть докладніше',
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(8),
-                borderSide: BorderSide(color: Color(0x3D202124)),
-              ),
-            ),
+            hintText: 'Розкажіть докладніше',
           ),
         ],
       ),
