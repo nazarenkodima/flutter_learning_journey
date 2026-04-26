@@ -1,35 +1,21 @@
 import 'package:flutter/material.dart';
 
 class Rating extends StatelessWidget {
-  const Rating({super.key, required this.rating, required this.onChanged});
+  const Rating({super.key, required this.active, required this.onTap});
 
-  final int rating;
-  final ValueChanged<int> onChanged;
+  final bool active;
+  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
-    return FittedBox(
-      fit: .scaleDown,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: List.generate(5, (i) {
-          final active = i < rating;
-
-          return GestureDetector(
-            onTap: () => onChanged(i + 1),
-            child: active
-                ? Image.asset(
-                    'assets/images/rating_filled.png',
-                    width: 48,
-                    height: 48,
-                  )
-                : Image.asset(
-                    'assets/images/rating_empty.png',
-                    width: 48,
-                    height: 48,
-                  ),
-          );
-        }),
+    return GestureDetector(
+      onTap: onTap,
+      child: Image.asset(
+        active
+            ? 'assets/images/rating_filled.png'
+            : 'assets/images/rating_empty.png',
+        width: 48,
+        height: 48,
       ),
     );
   }

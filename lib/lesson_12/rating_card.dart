@@ -21,7 +21,19 @@ class RatingCard extends StatelessWidget {
           BoxShadow(color: Color(0x0F000000), offset: Offset(0, 1)),
         ],
       ),
-      child: Rating(rating: rating, onChanged: onChanged),
+      child: FittedBox(
+        fit: BoxFit.scaleDown,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: List.generate(
+            5,
+            (i) => Rating(
+              active: i < rating,
+              onTap: () => onChanged(i + 1),
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
