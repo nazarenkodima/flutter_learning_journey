@@ -55,9 +55,12 @@ class DepartmentCard extends StatelessWidget {
                 onChanged: (vote) => onVoteChanged(i, vote),
               ),
             ),
-          CommentInput(
-            controller: department.commentController,
-            hintText: 'Розкажіть докладніше',
+          Padding(
+            padding: const EdgeInsets.only(top: 8),
+            child: CommentInput(
+              controller: department.commentController,
+              hintText: 'Розкажіть докладніше',
+            ),
           ),
         ],
       ),
