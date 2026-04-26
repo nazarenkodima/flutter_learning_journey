@@ -31,8 +31,8 @@ class RatingCard extends StatelessWidget {
         children: List.generate(
           5,
           (i) => GestureDetector(
-            onTap: () => {onChanged(i)},
-            child: rating >= i
+            onTap: () => {onChanged(i + 1)},
+            child: rating >= i + 1
                 ? Image.asset('assets/images/rating_filled.png', width: 58)
                 : Image.asset('assets/images/rating_empty.png', width: 48),
           ),
