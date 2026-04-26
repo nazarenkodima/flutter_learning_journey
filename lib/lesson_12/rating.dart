@@ -8,26 +8,29 @@ class Rating extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: List.generate(5, (i) {
-        final active = i < rating;
+    return FittedBox(
+      fit: .scaleDown,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: List.generate(5, (i) {
+          final active = i < rating;
 
-        return GestureDetector(
-          onTap: () => onChanged(i + 1),
-          child: active
-              ? Image.asset(
-                  'assets/images/rating_filled.png',
-                  width: 48,
-                  height: 48,
-                )
-              : Image.asset(
-                  'assets/images/rating_empty.png',
-                  width: 48,
-                  height: 48,
-                ),
-        );
-      }),
+          return GestureDetector(
+            onTap: () => onChanged(i + 1),
+            child: active
+                ? Image.asset(
+                    'assets/images/rating_filled.png',
+                    width: 48,
+                    height: 48,
+                  )
+                : Image.asset(
+                    'assets/images/rating_empty.png',
+                    width: 48,
+                    height: 48,
+                  ),
+          );
+        }),
+      ),
     );
   }
 }

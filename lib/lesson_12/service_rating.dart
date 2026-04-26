@@ -22,11 +22,16 @@ class ServiceRating extends StatelessWidget {
         borderRadius: BorderRadius.circular(12),
       ),
       child: Row(
+        spacing: 12,
         children: [
           Expanded(
-            child: Text(
-              label,
-              style: const TextStyle(fontSize: 16, fontWeight: .w400),
+            child: FittedBox(
+              fit: .scaleDown,
+              alignment: .centerLeft,
+              child: Text(
+                label,
+                style: const TextStyle(fontSize: 16, fontWeight: .w400),
+              ),
             ),
           ),
           GestureDetector(
@@ -49,7 +54,7 @@ class ServiceRating extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(width: 12),
+
           GestureDetector(
             onTap: () => onChanged(Vote.up),
             child: Container(
