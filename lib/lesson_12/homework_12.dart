@@ -33,6 +33,15 @@ class _FormsState extends State<Forms> {
   ];
 
   @override
+  void dispose() {
+    feedbackController.dispose();
+    for (final department in _departments) {
+      department.commentController.dispose();
+    }
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -80,6 +89,40 @@ class _FormsState extends State<Forms> {
         child: Button(
           onPressed: () {
             for (final department in _departments) {
+              if (_rating == 0) {
+                if (_rating == 0) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text('Додайте хоч якийсь рейтинг 🤔'),
+                      backgroundColor: Colors.black,
+                    ),
+                  );
+                }
+                return;
+              }
+
+              final notVoted = _departments
+                  .where((deprarment) => deprarment.votes.contains(Vote.none))
+                  .map((deprarment) => deprarment.title)
+                  .toList();
+
+              if (notVoted.isNotEmpty) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text('Не оцінено: ${notVoted.join(', ')} 🍩'),
+                    backgroundColor: Colors.black,
+                  ),
+                );
+                return;
+              }
+
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text('Дякуємо за відгук! 🙌'),
+                  backgroundColor: Colors.black,
+                ),
+              );
+
               debugPrint(
                 '${department.title}: votes=${department.votes}, comment=${department.commentController.text}',
               );
