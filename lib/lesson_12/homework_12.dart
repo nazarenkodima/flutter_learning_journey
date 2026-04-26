@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_learning_journey/lesson_12/rating_card.dart';
 
 class Forms extends StatefulWidget {
   const Forms({super.key});
@@ -7,22 +8,34 @@ class Forms extends StatefulWidget {
   State<Forms> createState() => _FormsState();
 }
 
+//
 class _FormsState extends State<Forms> {
+  int _rating = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Оцінка візиту до магазину'),
-        leading: Icon(
-          Icons.chevron_left,
-          size: 24,
-          color: Colors.grey.shade600,
+        title: const Text(
+          'Оцінка візиту до магазину',
+          style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
         ),
-
         foregroundColor: Colors.black,
+        backgroundColor: Colors.white,
       ),
-      body: Center(
-        child: Image.asset('assets/images/rating_empty.png', width: 48),
+      body: SingleChildScrollView(
+        child: Column(
+          spacing: 10,
+          crossAxisAlignment: .stretch,
+          children: [
+            RatingCard(
+              rating: _rating,
+              onChanged: (value) => setState(() {
+                _rating = value;
+              }),
+            ),
+          ],
+        ),
       ),
       backgroundColor: const Color(0xFFEEF2FC),
     );
