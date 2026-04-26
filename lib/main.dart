@@ -13,7 +13,7 @@ class FlutterLab extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Lab',
-      theme: ThemeData(),
+      theme: ThemeData(fontFamily: 'SilpoText'),
       home: const HomeScreen(),
     );
   }
@@ -83,7 +83,7 @@ class FeatureCard extends StatelessWidget {
                 ),
               ),
               Icon(
-                Icons.arrow_forward_ios,
+                Icons.arrow_forward_ios_sharp,
                 size: 16,
                 color: Colors.grey.shade600,
               ),
