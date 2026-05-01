@@ -548,7 +548,8 @@ class TrainingExample19 extends StatelessWidget {
 // накладається на червоний, але не накладається на синій (він знаходиться під
 // синім контейнером). Відповідь запишіть в коментарі до коду нижче.
 
-/// Відповідь: ...
+/// Відповідь: Якщо правильон зроузмів з своїх тестів нижче - зелений накладаєтьсяна на червоний через OverflowBox бо вище по висоті за parent висоту.
+/// І не накладається на синій - через те як віджежти в флаттері подефолту відмальовуються в widget tree, Bottom-to-Top.
 
 class TrainingExample20 extends StatelessWidget {
   const TrainingExample20({super.key});
@@ -563,6 +564,15 @@ class TrainingExample20 extends StatelessWidget {
             maxHeight: double.infinity,
             maxWidth: double.infinity,
             child: Container(color: Colors.green, width: 200, height: 200),
+          ),
+        ),
+        Container(color: Colors.purple, height: 100, width: double.infinity),
+        SizedBox(
+          height: 100,
+          child: OverflowBox(
+            maxHeight: double.infinity,
+            maxWidth: double.infinity,
+            child: Container(color: Colors.yellow, width: 200, height: 200),
           ),
         ),
         Container(color: Colors.blue, height: 100, width: double.infinity),
