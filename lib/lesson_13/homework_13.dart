@@ -486,11 +486,31 @@ class TrainingExample18 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Container(
-        color: Colors.blue,
-        width: 200,
-        height: 200,
-        child: Container(color: Colors.red, width: 50, height: 50),
+      child: Column(
+        mainAxisAlignment: .center,
+        spacing: 16,
+        children: [
+          Container(
+            color: Colors.blue,
+            width: 200,
+            height: 200,
+            child: UnconstrainedBox(
+              child: Container(color: Colors.red, width: 50, height: 50),
+            ),
+          ),
+          Container(
+            color: Colors.blue,
+            width: 200,
+            height: 200,
+            child: OverflowBox(
+              maxWidth: 50,
+              minWidth: 0,
+              minHeight: 0,
+              maxHeight: 50,
+              child: Container(color: Colors.red, width: 50, height: 50),
+            ),
+          ),
+        ],
       ),
     );
   }
