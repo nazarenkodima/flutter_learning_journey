@@ -359,13 +359,15 @@ class TrainingExample13 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Container(
-        width: 200,
-        height: 50,
-        color: Colors.amber,
-        child: const Text(
-          'Дуже довгий текст який не поміщається',
-          style: TextStyle(fontSize: 30),
+      child: FittedBox(
+        child: Container(
+          width: 200,
+          height: 50,
+          color: Colors.amber,
+          child: const Text(
+            'Дуже довгий текст який не поміщається',
+            style: TextStyle(fontSize: 30),
+          ),
         ),
       ),
     );
