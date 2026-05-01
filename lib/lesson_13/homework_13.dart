@@ -387,11 +387,12 @@ class TrainingExample14 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Container(
-        width: 200,
-        height: 100,
-        color: Colors.lightBlue.shade100,
-        child: const FittedBox(
+      child: FittedBox(
+        child: Container(
+          alignment: .center,
+          width: 200,
+          height: 100,
+          color: Colors.lightBlue.shade100,
           child: Text('Flutter', style: TextStyle(fontSize: 30)),
         ),
       ),
