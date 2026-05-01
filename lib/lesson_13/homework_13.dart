@@ -326,19 +326,25 @@ class TrainingExample12 extends StatelessWidget {
   const TrainingExample12({super.key});
   @override
   Widget build(BuildContext context) {
-    const redContainerWidth = 100.0;
+    const redContainerWidth = 300.0;
 
-    return Row(
-      children: [
-        Container(
-          color: Colors.red,
-          height: 100,
-          width: redContainerWidth,
-          child: const Text('Hi'),
-        ),
-
-        Expanded(child: Container(color: Colors.green, height: 100)),
-      ],
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        debugPrint('constraints: ${constraints.maxWidth}');
+        return Row(
+          children: [
+            Container(
+              color: Colors.red,
+              height: 100,
+              width: redContainerWidth >= constraints.maxWidth
+                  ? constraints.maxWidth
+                  : redContainerWidth,
+              child: const Text('Hi'),
+            ),
+            Expanded(child: Container(color: Colors.green, height: 100)),
+          ],
+        );
+      },
     );
   }
 }
