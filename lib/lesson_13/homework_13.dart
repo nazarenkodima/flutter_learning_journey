@@ -424,7 +424,8 @@ class TrainingExample15 extends StatelessWidget {
 // Тут просто розберіться - чому не застосовуються constraints ConstrainedBox?
 
 // Запишіть відповідь у коментарі до коду нижче
-// Відповідь: ConstrainedBox не застосовуються, тому що ...
+// Відповідь: ConstrainedBox не застосовуються, тому що його prarent SizedBox обмежує його в тих розмірах який він хотів би мати.
+// якщо прибрати - то розтягнеться на все екран.
 class TrainingExample16 extends StatelessWidget {
   const TrainingExample16({super.key});
   @override
