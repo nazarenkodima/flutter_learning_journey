@@ -411,7 +411,11 @@ class TrainingExample15 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Container(color: Colors.yellow, width: 50, height: 50),
+      child: SizedBox(
+        width: 200,
+        height: 200,
+        child: Container(color: Colors.yellow, width: 50, height: 50),
+      ),
     );
   }
 }
