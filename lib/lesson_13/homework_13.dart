@@ -531,7 +531,11 @@ class TrainingExample19 extends StatelessWidget {
         color: Colors.blue,
         width: 200,
         height: 200,
-        child: UnconstrainedBox(
+        child: OverflowBox(
+          maxHeight: 100,
+          maxWidth: 300,
+          minWidth: 0,
+          minHeight: 0,
           child: Container(color: Colors.green, width: 300, height: 100),
         ),
       ),
