@@ -585,7 +585,7 @@ class TrainingExample20 extends StatelessWidget {
 // На цьому прикладі розгляньте, чому в другому Column контейнер з зеленим
 // кольором не обмежується батьком LimitedBox.
 
-// Відповідь: ...
+// Відповідь: Тому що вище батька LimitedBox, батько SizedBox каже бути по висоті 100
 class TrainingExample21 extends StatelessWidget {
   const TrainingExample21({super.key});
   @override
