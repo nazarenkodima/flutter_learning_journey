@@ -300,7 +300,7 @@ class TrainingExample11 extends StatelessWidget {
     return Center(
       child: Row(
         children: [
-          Expanded(child: Container(color: Colors.red, width: 80, height: 100)),
+          Container(color: Colors.red, width: 80, height: 100),
           Expanded(child: Container(color: Colors.green, height: 100)),
           Expanded(child: Container(color: Colors.blue, height: 100)),
         ],
