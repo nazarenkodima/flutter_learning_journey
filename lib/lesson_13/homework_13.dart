@@ -620,24 +620,31 @@ class TrainingExample21 extends StatelessWidget {
 // Task 22:
 // Чому LimitedBox не впливає на розмір зеленого контейнера?
 
-// Відповідь: ...
+// Відповідь: через те що батько задає обмеження. в тултіп підказує - Creates a box that limits its size only when it's unconstrained.
+// тобто якщо обгорнути в те що не обмежує - тоді спрацює LimitedBox maxHeight
 class TrainingExample22 extends StatelessWidget {
   const TrainingExample22({super.key});
   @override
   Widget build(BuildContext context) {
-    return const LimitedBox(
-      maxHeight: 80,
-      child: ColoredBox(
-        color: Colors.green,
-        child: Text(
-          'lorem ipsum dolor sit amet consectetur adipiscing elit sed do '
-          'eiusmod tempor incididunt ut labore et dolore magna aliqua, '
-          'Lorem ipsum dolor sit amet consectetur adipiscing elit sed do '
-          'eiusmod tempor incididunt ut labore et dolore magna aliqua, '
-          'Lorem ipsum dolor sit amet consectetur adipiscing elit sed do '
-          'eiusmod tempor incididunt ut labore et dolore magna aliqua, ',
+    return Column(
+      children: [
+        const LimitedBox(
+          maxHeight: 80,
+          child: ColoredBox(
+            color: Colors.green,
+            child: Text(
+              'lorem ipsum dolor sit amet consectetur adipiscing elit sed do '
+              'eiusmod tempor incididunt ut labore et dolore magna aliqua, '
+              'Lorem ipsum dolor sit amet consectetur adipiscing elit sed do '
+              'eiusmod tempor incididunt ut labore et dolore magna aliqua, '
+              'Lorem ipsum dolor sit amet consectetur adipiscing elit sed do '
+              'eiusmod tempor incididunt ut labore et dolore magna aliqua, '
+              'fsdfdsfdsfsdfsdfsdfsdfasdasdasdasdsadasdasdasdasdasdasdasdas '
+              'asdasdasdasdasdasd ',
+            ),
+          ),
         ),
-      ),
+      ],
     );
   }
 }
