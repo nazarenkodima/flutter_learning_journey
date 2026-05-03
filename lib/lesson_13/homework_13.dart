@@ -93,13 +93,7 @@ class TrainingExample2 extends StatelessWidget {
     return Row(
       children: [
         Container(width: 100, height: 200, color: Colors.green),
-        Expanded(
-          child: Container(
-            width: double.infinity,
-            height: 200,
-            color: Colors.blue,
-          ),
-        ),
+        Expanded(child: Container(height: 200, color: Colors.blue)),
       ],
     );
   }
