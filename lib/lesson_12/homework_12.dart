@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_learning_journey/lesson_12/department_card.dart';
 import 'package:flutter_learning_journey/lesson_12/rating_card.dart';
-import 'package:flutter_learning_journey/lesson_12/section_title.dart';
 import 'package:flutter_learning_journey/lesson_12/button.dart';
 import 'package:flutter_learning_journey/lesson_12/comment_input.dart';
 
@@ -69,7 +68,15 @@ class _FormsState extends State<Forms> {
                 _rating = value;
               }),
             ),
-            SectionTitle(title: 'Яку оціночку поставите відділам?'),
+            const Padding(
+              padding: EdgeInsets.all(16),
+              child: Align(
+                child: Text(
+                  'Яку оціночку поставите відділам?',
+                  style: TextStyle(fontWeight: FontWeight.w600, fontSize: 18),
+                ),
+              ),
+            ),
             ..._departments.map((department) {
               return DepartmentCard(
                 department: department,
@@ -78,7 +85,16 @@ class _FormsState extends State<Forms> {
                 }),
               );
             }),
-            SectionTitle(title: 'Є що додати?', position: .left),
+            const Padding(
+              padding: EdgeInsets.all(16),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  'Є що додати?',
+                  style: TextStyle(fontWeight: FontWeight.w600, fontSize: 18),
+                ),
+              ),
+            ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: CommentInput(
