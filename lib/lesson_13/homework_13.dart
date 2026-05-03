@@ -138,8 +138,7 @@ class TrainingExample4 extends StatelessWidget {
         height: 200,
         padding: .all(10),
         color: Colors.green,
-
-        child: Container(color: Colors.orange, height: 200, width: 200),
+        child: Container(color: Colors.orange),
       ),
     );
   }
