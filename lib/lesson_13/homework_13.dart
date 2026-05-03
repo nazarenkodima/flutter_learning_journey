@@ -404,9 +404,8 @@ class TrainingExample15 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: SizedBox(
-        width: 200,
-        height: 200,
+      child: ConstrainedBox(
+        constraints: const BoxConstraints(minWidth: 200, minHeight: 200),
         child: Container(color: Colors.yellow, width: 50, height: 50),
       ),
     );
