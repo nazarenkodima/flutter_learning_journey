@@ -15,22 +15,28 @@ class Forms extends StatefulWidget {
 //
 class _FormsState extends State<Forms> {
   int _rating = 0;
-  final feedbackController = TextEditingController();
+  late final TextEditingController feedbackController;
+  late final List<Department> _departments;
 
-  final List<Department> _departments = [
-    Department(
-      title: 'Випічка',
-      items: ['Обслуговування', 'Асортимент'],
-      votes: [Vote.none, Vote.none],
-      commentController: TextEditingController(),
-    ),
-    Department(
-      title: 'Лавка традицій',
-      items: ['Обслуговування', 'Асортимент'],
-      votes: [Vote.none, Vote.none],
-      commentController: TextEditingController(),
-    ),
-  ];
+  @override
+  void initState() {
+    super.initState();
+    feedbackController = TextEditingController();
+    _departments = [
+      Department(
+        title: 'Випічка',
+        items: ['Обслуговування', 'Асортимент'],
+        votes: [Vote.none, Vote.none],
+        commentController: TextEditingController(),
+      ),
+      Department(
+        title: 'Лавка традицій',
+        items: ['Обслуговування', 'Асортимент'],
+        votes: [Vote.none, Vote.none],
+        commentController: TextEditingController(),
+      ),
+    ];
+  }
 
   @override
   void dispose() {
