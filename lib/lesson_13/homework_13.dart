@@ -270,7 +270,7 @@ class TrainingExample10 extends StatelessWidget {
         crossAxisAlignment: .start,
         children: [
           Container(color: Colors.orange, height: 100, width: 100),
-          Flexible(
+          Expanded(
             child: ListView.builder(
               itemCount: 20,
               itemBuilder: (context, index) => Text('Item $index'),
