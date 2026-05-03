@@ -210,7 +210,7 @@ class TrainingExample7 extends StatelessWidget {
     return Column(
       children: [
         Container(color: Colors.orange, height: 100, width: 100),
-        Flexible(
+        Expanded(
           child: ListView.builder(
             itemCount: 50,
             itemBuilder: (context, index) => Text('Item $index'),
