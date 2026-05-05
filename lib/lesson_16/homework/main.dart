@@ -34,7 +34,25 @@ final router = GoRouter(
         GoRoute(
           path: '/lesson-12',
           name: RouteNames.forms,
-          builder: (context, state) => Forms(),
+          pageBuilder: (context, state) => CustomTransitionPage(
+            key: state.pageKey,
+            child: const Forms(),
+            transitionDuration: const Duration(milliseconds: 700),
+            transitionsBuilder: (context, animation, _, child) {
+              return FadeTransition(
+                opacity: animation,
+                child: ScaleTransition(
+                  scale: Tween<double>(begin: 0.5, end: 1.0).animate(
+                    CurvedAnimation(
+                      parent: animation,
+                      curve: Curves.easeOutBack,
+                    ),
+                  ),
+                  child: child,
+                ),
+              );
+            },
+          ),
         ),
         GoRoute(
           path: '/lesson-13',
