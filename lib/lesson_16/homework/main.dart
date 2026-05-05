@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_learning_journey/features/screens/home_screen.dart';
 import 'package:flutter_learning_journey/lesson_11/homework_11_screen.dart';
 import 'package:flutter_learning_journey/lesson_12/homework_12.dart';
@@ -17,7 +18,19 @@ final router = GoRouter(
         GoRoute(
           path: '/lesson-11',
           name: RouteNames.lesson11,
-          builder: (context, state) => Lesson11Screen(),
+          pageBuilder: (context, state) => CustomTransitionPage(
+            key: state.pageKey,
+            child: const Lesson11Screen(),
+            transitionsBuilder: (context, animation, _, child) {
+              return SlideTransition(
+                position: Tween<Offset>(
+                  begin: const Offset(1, 0),
+                  end: Offset.zero,
+                ).animate(animation),
+                child: child,
+              );
+            },
+          ),
         ),
         GoRoute(
           path: '/lesson-12',
