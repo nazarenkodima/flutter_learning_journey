@@ -5,14 +5,14 @@ import 'package:flutter_learning_journey/lesson_11/homework_11_subtask3.dart';
 import 'package:flutter_learning_journey/lesson_11/homework_11_subtask4.dart';
 import 'package:flutter_learning_journey/lesson_11/homework_11_subtask5.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+class Lesson11Screen extends StatefulWidget {
+  const Lesson11Screen({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<Lesson11Screen> createState() => _Lesson11ScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _Lesson11ScreenState extends State<Lesson11Screen> {
   int _selectedIndex = 0;
 
   static const _icons = [
