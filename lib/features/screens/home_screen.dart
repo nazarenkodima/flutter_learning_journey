@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_learning_journey/lesson_11/homework_11_screen.dart';
-import 'package:flutter_learning_journey/lesson_12/homework_12.dart';
-import 'package:flutter_learning_journey/lesson_13/homework_13.dart';
 import 'package:flutter_learning_journey/router/routes_names.dart';
 import 'package:go_router/go_router.dart';
 
