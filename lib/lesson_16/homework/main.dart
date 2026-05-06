@@ -15,7 +15,7 @@ final router = GoRouter(
       builder: (context, state) => HomeScreen(),
       routes: [
         GoRoute(
-          path: '/lesson-11',
+          path: 'lesson-11',
           name: RouteNames.lesson11,
           pageBuilder: (context, state) => CustomTransitionPage(
             key: state.pageKey,
@@ -32,7 +32,7 @@ final router = GoRouter(
           ),
         ),
         GoRoute(
-          path: '/lesson-12',
+          path: 'lesson-12',
           name: RouteNames.forms,
           pageBuilder: (context, state) => CustomTransitionPage(
             key: state.pageKey,
@@ -55,7 +55,7 @@ final router = GoRouter(
           ),
         ),
         GoRoute(
-          path: '/lesson-13',
+          path: 'lesson-13',
           name: RouteNames.widgetConstraints,
           builder: (context, state) => WidgetConstrainsTrainingScreen(),
         ),
