@@ -21,15 +21,15 @@ class HomeScreen extends StatelessWidget {
           children: [
             FeatureCard(
               title: 'Lesson 11',
-              onTap: () => (context.pushNamed(RouteNames.lesson11)),
+              onTap: () => context.goNamed(RouteNames.lesson11),
             ),
             FeatureCard(
               title: 'Lesson 12',
-              onTap: () => (context.pushNamed(RouteNames.forms)),
+              onTap: () => context.goNamed(RouteNames.forms),
             ),
             FeatureCard(
               title: 'Lesson 13',
-              onTap: () => (context.pushNamed(RouteNames.widgetConstraints)),
+              onTap: () => context.goNamed(RouteNames.widgetConstraints),
             ),
           ],
         ),
