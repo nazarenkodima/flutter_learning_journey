@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_learning_journey/router/routes_names.dart';
+import 'package:go_router/go_router.dart';
 
 class StateManagmentBaseScreen extends StatelessWidget {
   const StateManagmentBaseScreen({super.key});
@@ -17,10 +19,11 @@ class StateManagmentBaseScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             ElevatedButton.icon(
-              onPressed: null,
+              onPressed: () => context.goNamed(RouteNames.lesson18Cubit),
               icon: const Icon(Icons.code, size: 24),
               label: const Text('Cubit Example'),
               style: ElevatedButton.styleFrom(
+                foregroundColor: Colors.white,
                 backgroundColor: Colors.blue.shade600,
                 disabledBackgroundColor: Colors.blue,
                 disabledForegroundColor: Colors.white70,
@@ -29,6 +32,7 @@ class StateManagmentBaseScreen extends StatelessWidget {
                 textStyle: const TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.w600,
+                  color: Colors.white,
                 ),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12),
@@ -37,11 +41,11 @@ class StateManagmentBaseScreen extends StatelessWidget {
             ),
             const SizedBox(height: 16),
             ElevatedButton.icon(
-              onPressed: null,
+              onPressed: () => context.goNamed(RouteNames.lesson18Bloc),
               icon: const Icon(Icons.temple_buddhist_sharp, size: 24),
               label: const Text('Bloc Example'),
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.deepOrange.shade600,
+                backgroundColor: Colors.yellow.shade500,
                 foregroundColor: Colors.black,
                 disabledBackgroundColor: Colors.yellow.shade500,
                 disabledForegroundColor: Colors.black,
