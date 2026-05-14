@@ -3,6 +3,7 @@ import 'package:flutter_learning_journey/features/screens/home_screen.dart';
 import 'package:flutter_learning_journey/lesson_11/homework_11_screen.dart';
 import 'package:flutter_learning_journey/lesson_12/homework_12.dart';
 import 'package:flutter_learning_journey/lesson_13/homework_13.dart';
+import 'package:flutter_learning_journey/lesson_18/state_managment_base_screen.dart';
 import 'package:flutter_learning_journey/router/routes_names.dart';
 import 'package:go_router/go_router.dart';
 
@@ -58,6 +59,11 @@ final router = GoRouter(
           path: 'lesson-13',
           name: RouteNames.widgetConstraints,
           builder: (context, state) => WidgetConstrainsTrainingScreen(),
+        ),
+        GoRoute(
+          path: 'lesson-18',
+          name: RouteNames.lesson18,
+          builder: (context, state) => const StateManagmentBaseScreen(),
         ),
       ],
     ),
