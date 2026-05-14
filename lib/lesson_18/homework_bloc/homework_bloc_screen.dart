@@ -8,18 +8,6 @@ class HomeworkBlocScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (_) => CounterBloc(),
-      child: const _HomeworkBlocView(),
-    );
-  }
-}
-
-class _HomeworkBlocView extends StatelessWidget {
-  const _HomeworkBlocView();
-
-  @override
-  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,

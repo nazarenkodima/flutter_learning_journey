@@ -7,18 +7,6 @@ class HomeworkCubitScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (_) => CounterCubit(),
-      child: const _HomeworkCubitView(),
-    );
-  }
-}
-
-class _HomeworkCubitView extends StatelessWidget {
-  const _HomeworkCubitView();
-
-  @override
-  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
