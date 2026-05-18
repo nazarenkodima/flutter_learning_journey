@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_learning_journey/lesson_18/homework_bloc/counter_bloc.dart';
+import 'package:flutter_learning_journey/lesson_18/homework_cubit/counter_cubit.dart';
 import 'package:flutter_learning_journey/router/routes_names.dart';
 import 'package:go_router/go_router.dart';
 
@@ -19,6 +22,8 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
+            const _GlobalCountersPanel(),
+            const SizedBox(height: 16),
             FeatureCard(
               title: 'Lesson 11',
               onTap: () => context.goNamed(RouteNames.lesson11),
@@ -30,6 +35,68 @@ class HomeScreen extends StatelessWidget {
             FeatureCard(
               title: 'Lesson 13',
               onTap: () => context.goNamed(RouteNames.widgetConstraints),
+            ),
+            FeatureCard(
+              title: 'Lesson 18: State managment',
+              onTap: () => context.goNamed(RouteNames.lesson18),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _GlobalCountersPanel extends StatelessWidget {
+  const _GlobalCountersPanel();
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      elevation: 2,
+      color: Colors.purple.shade100,
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            const Text(
+              'Global counters',
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+            ),
+            const SizedBox(height: 8),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Column(
+                  children: [
+                    const Text('Cubit'),
+                    BlocBuilder<CounterCubit, int>(
+                      builder: (context, count) => Text(
+                        '$count',
+                        style: const TextStyle(
+                          fontSize: 28,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                Column(
+                  children: [
+                    const Text('Bloc'),
+                    BlocBuilder<CounterBloc, int>(
+                      builder: (context, count) => Text(
+                        '$count',
+                        style: const TextStyle(
+                          fontSize: 28,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
             ),
           ],
         ),
