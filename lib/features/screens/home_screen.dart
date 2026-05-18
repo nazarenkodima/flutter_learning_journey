@@ -41,7 +41,7 @@ class HomeScreen extends StatelessWidget {
               onTap: () => context.goNamed(RouteNames.lesson18),
             ),
             FeatureCard(
-              title: 'HW-19. Rate screen',
+              title: 'Lesson 19: Rate screen',
               onTap: () => context.goNamed(RouteNames.lesson19RateApp),
             ),
           ],
