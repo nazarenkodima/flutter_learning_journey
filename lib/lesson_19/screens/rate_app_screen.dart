@@ -112,7 +112,7 @@ class _RatingView extends StatelessWidget {
           'How would you rate the app?',
           textAlign: TextAlign.center,
           style: TextStyle(
-            fontSize: 16,
+            fontSize: 20,
             fontWeight: FontWeight.w600,
             color: RateAppColors.navy,
           ),
@@ -194,7 +194,7 @@ class _SuccessView extends StatelessWidget {
           'You rated the app',
           textAlign: TextAlign.center,
           style: TextStyle(
-            fontSize: 16,
+            fontSize: 20,
             fontWeight: FontWeight.w600,
             color: RateAppColors.navy,
           ),
