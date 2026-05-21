@@ -37,42 +37,58 @@ class _RateAppScreenState extends State<RateAppScreen> {
         backgroundColor: RateAppColors.navy,
         foregroundColor: Colors.white,
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 48),
-        child: BlocConsumer<RateAppCubit, RateAppState>(
-          listenWhen: (prev, curr) =>
-              prev.status != curr.status &&
-              curr.status == RateAppStatus.success,
-          listener: (context, state) {
-            final messenger = ScaffoldMessenger.of(context);
-            context.pop();
-            messenger.showSnackBar(_successSnackBar());
-          },
-          builder: (context, state) {
-            return Container(
-              decoration: BoxDecoration(
-                color: RateAppColors.cardBlue,
-                borderRadius: BorderRadius.circular(20),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withValues(alpha: 0.25),
-                    offset: const Offset(0, 4),
-                    blurRadius: 4,
+      body: BlocConsumer<RateAppCubit, RateAppState>(
+        listenWhen: (prev, curr) =>
+            prev.status != curr.status && curr.status == RateAppStatus.success,
+        listener: (context, state) {
+          final messenger = ScaffoldMessenger.of(context);
+          context.pop();
+          messenger.showSnackBar(_successSnackBar());
+        },
+        builder: (context, state) {
+          return SingleChildScrollView(
+            padding: const EdgeInsets.symmetric(vertical: 24),
+            child: Stack(
+              clipBehavior: Clip.none,
+              alignment: Alignment.topCenter,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 120),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: RateAppColors.cardBlue,
+                      borderRadius: BorderRadius.circular(20),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withValues(alpha: 0.25),
+                          offset: const Offset(0, 4),
+                          blurRadius: 4,
+                        ),
+                      ],
+                    ),
+                    padding: const EdgeInsets.only(
+                      top: 32,
+                      bottom: 48,
+                      left: 16,
+                      right: 16,
+                    ),
+                    child: state.status == RateAppStatus.success
+                        ? const _SuccessView()
+                        : _RatingView(state: state),
                   ),
-                ],
-              ),
-              padding: const EdgeInsets.only(
-                top: 32,
-                bottom: 48,
-                left: 16,
-                right: 16,
-              ),
-              child: state.status == RateAppStatus.success
-                  ? const _SuccessView()
-                  : _RatingView(state: state),
-            );
-          },
-        ),
+                ),
+                AnimatedSwitcher(
+                  duration: const Duration(milliseconds: 250),
+                  child: Image.asset(
+                    'assets/images/${state.rating}.png',
+                    key: ValueKey(state.rating),
+                    height: 160,
+                  ),
+                ),
+              ],
+            ),
+          );
+        },
       ),
     );
   }
