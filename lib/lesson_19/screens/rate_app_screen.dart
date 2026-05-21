@@ -221,12 +221,18 @@ class _StarsRow extends StatelessWidget {
           onTap: onStarTap == null ? null : () => onStarTap!(index + 1),
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 4),
-            child: Image.asset(
-              filled
-                  ? 'assets/images/rating_filled.png'
-                  : 'assets/images/rating_empty.png',
-              width: 40,
-              height: 40,
+            child: AnimatedSwitcher(
+              duration: const Duration(milliseconds: 150),
+              transitionBuilder: (child, animation) =>
+                  ScaleTransition(scale: animation, child: child),
+              child: Image.asset(
+                filled
+                    ? 'assets/images/rating_filled.png'
+                    : 'assets/images/rating_empty.png',
+                key: ValueKey(filled),
+                width: 40,
+                height: 40,
+              ),
             ),
           ),
         );
