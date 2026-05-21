@@ -263,7 +263,6 @@ SnackBar _successSnackBar() {
     duration: const Duration(seconds: 3),
     backgroundColor: RateAppColors.snackBarPill,
     content: const Row(
-      mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: .center,
       spacing: 10,
       children: [
