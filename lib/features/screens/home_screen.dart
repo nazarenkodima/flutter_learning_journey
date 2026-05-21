@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_learning_journey/lesson_18/homework_bloc/counter_bloc.dart';
 import 'package:flutter_learning_journey/lesson_18/homework_cubit/counter_cubit.dart';
+import 'package:flutter_learning_journey/lesson_19/bloc/rate_app_cubit.dart';
 import 'package:flutter_learning_journey/router/routes_names.dart';
 import 'package:go_router/go_router.dart';
 
@@ -99,6 +100,24 @@ class _GlobalCountersPanel extends StatelessWidget {
                       ),
                     ),
                   ],
+                ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: .center,
+              spacing: 8,
+              children: [
+                const Text('Rating'),
+                BlocBuilder<RateAppCubit, RateAppState>(
+                  builder: (context, state) => Text(
+                    state.status == RateAppStatus.success
+                        ? '${state.rating}'
+                        : '0',
+                    style: const TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ),
               ],
             ),
