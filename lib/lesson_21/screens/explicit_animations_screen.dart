@@ -27,6 +27,14 @@ class ExplicitAnimationsScreen extends StatelessWidget {
               ),
             ],
           ),
+          Align(
+            alignment: const Alignment(0, 0.4),
+            child: Image.asset(
+              'assets/images/ball.png',
+              width: 100,
+              height: 100,
+            ),
+          ),
         ],
       ),
     );
