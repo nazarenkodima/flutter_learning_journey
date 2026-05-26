@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_learning_journey/lesson_16/homework/main.dart';
 import 'package:flutter_learning_journey/lesson_18/homework_bloc/counter_bloc.dart';
 import 'package:flutter_learning_journey/lesson_18/homework_cubit/counter_cubit.dart';
+import 'package:flutter_learning_journey/lesson_19/bloc/rate_app_cubit.dart';
 
 void main() {
   runApp(const FlutterLab());
@@ -17,6 +18,7 @@ class FlutterLab extends StatelessWidget {
       providers: [
         BlocProvider(create: (_) => CounterCubit()),
         BlocProvider(create: (_) => CounterBloc()),
+        BlocProvider(create: (_) => RateAppCubit()),
       ],
       child: MaterialApp.router(
         routerConfig: router,
