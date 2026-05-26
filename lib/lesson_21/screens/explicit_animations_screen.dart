@@ -11,7 +11,24 @@ class ExplicitAnimationsScreen extends StatelessWidget {
         backgroundColor: Colors.blue.shade600,
         foregroundColor: Colors.white,
       ),
-      body: const Center(child: Text('Create animation')),
+      body: Stack(
+        fit: StackFit.expand,
+        children: [
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Expanded(
+                flex: 7,
+                child: ColoredBox(color: Colors.lightBlue.shade300),
+              ),
+              Expanded(
+                flex: 3,
+                child: ColoredBox(color: Colors.green.shade600),
+              ),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }
