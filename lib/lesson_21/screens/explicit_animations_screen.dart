@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 const _oneTurn = 2 * pi;
 const animationDuration = 2000;
-const bounceHeight = 500.0;
+const ballSize = 80.0;
 
 class ExplicitAnimationsScreen extends StatefulWidget {
   const ExplicitAnimationsScreen({super.key});
@@ -33,14 +33,14 @@ class _ExplicitAnimationsScreenState extends State<ExplicitAnimationsScreen>
       TweenSequenceItem(
         tween: Tween(
           begin: 0.0,
-          end: -bounceHeight,
+          end: 1.0,
         ).chain(CurveTween(curve: Curves.easeOutBack)),
         weight: 2,
       ),
-      TweenSequenceItem(tween: ConstantTween(-bounceHeight), weight: 0.1),
+      TweenSequenceItem(tween: ConstantTween(1.0), weight: 0.1),
       TweenSequenceItem(
         tween: Tween(
-          begin: -bounceHeight,
+          begin: 1.0,
           end: 0.0,
         ).chain(CurveTween(curve: Curves.bounceOut)),
         weight: 4,
@@ -79,31 +79,36 @@ class _ExplicitAnimationsScreenState extends State<ExplicitAnimationsScreen>
             flex: 7,
             child: ColoredBox(
               color: Colors.lightBlue.shade300,
-              child: Align(
-                alignment: Alignment.bottomCenter,
-                child: AnimatedBuilder(
-                  animation: _ballController,
-                  builder: (context, child) {
-                    return Transform.translate(
-                      offset: Offset(0, _bounceAnim.value),
-                      child: Transform.rotate(
-                        angle: _rotateAnim.value,
-                        child: child,
-                      ),
-                    );
-                  },
-                  child: GestureDetector(
-                    onTap: _onBallTap,
-                    child: Transform.translate(
-                      offset: const Offset(0, 5),
-                      child: Image.asset(
-                        'assets/images/ball.png',
-                        width: 100,
-                        height: 100,
+              child: LayoutBuilder(
+                builder: (context, constraints) {
+                  final maxBounce = constraints.maxHeight - ballSize * 2;
+                  return Align(
+                    alignment: Alignment.bottomCenter,
+                    child: AnimatedBuilder(
+                      animation: _ballController,
+                      builder: (context, child) {
+                        return Transform.translate(
+                          offset: Offset(0, -_bounceAnim.value * maxBounce),
+                          child: Transform.rotate(
+                            angle: _rotateAnim.value,
+                            child: child,
+                          ),
+                        );
+                      },
+                      child: GestureDetector(
+                        onTap: _onBallTap,
+                        child: Transform.translate(
+                          offset: const Offset(0, 5),
+                          child: Image.asset(
+                            'assets/images/ball.png',
+                            width: ballSize,
+                            height: ballSize,
+                          ),
+                        ),
                       ),
                     ),
-                  ),
-                ),
+                  );
+                },
               ),
             ),
           ),
