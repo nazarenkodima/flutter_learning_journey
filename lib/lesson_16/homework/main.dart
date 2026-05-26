@@ -7,6 +7,7 @@ import 'package:flutter_learning_journey/lesson_18/homework_bloc/homework_bloc_s
 import 'package:flutter_learning_journey/lesson_18/homework_cubit/homework_cubit_screen.dart';
 import 'package:flutter_learning_journey/lesson_18/state_managment_base_screen.dart';
 import 'package:flutter_learning_journey/lesson_19/screens/rate_app_screen.dart';
+import 'package:flutter_learning_journey/lesson_21/screens/explicit_animations_screen.dart';
 import 'package:flutter_learning_journey/router/routes_names.dart';
 import 'package:go_router/go_router.dart';
 
@@ -84,6 +85,11 @@ final router = GoRouter(
           path: 'lesson-19',
           name: RouteNames.lesson19RateApp,
           builder: (context, state) => const RateAppScreen(),
+        ),
+        GoRoute(
+          path: 'lesson-21',
+          name: RouteNames.lesson21Animations,
+          builder: (context, state) => const ExplicitAnimationsScreen(),
         ),
       ],
     ),
