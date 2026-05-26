@@ -62,8 +62,27 @@ class RateAppScreen extends StatelessWidget {
                       right: 16,
                     ),
                     child: state.status == RateAppStatus.success
-                        ? const _SuccessView()
-                        : _RatingView(state: state),
+                        ? _SuccessView(
+                            rating: state.rating,
+                            onRateAgain: context.read<RateAppCubit>().reset,
+                          )
+                        : _RatingView(
+                            rating: state.rating,
+                            isLoading:
+                                state.status == RateAppStatus.loading,
+                            onStarTap:
+                                state.status == RateAppStatus.loading
+                                ? null
+                                : context.read<RateAppCubit>().setRating,
+                            onSubmit:
+                                (state.rating == 0 ||
+                                    state.status == RateAppStatus.loading)
+                                ? null
+                                : context.read<RateAppCubit>().submit,
+                            onReset: state.status == RateAppStatus.loading
+                                ? null
+                                : context.read<RateAppCubit>().reset,
+                          ),
                   ),
                 ),
                 AnimatedSwitcher(
@@ -85,15 +104,22 @@ class RateAppScreen extends StatelessWidget {
 }
 
 class _RatingView extends StatelessWidget {
-  const _RatingView({required this.state});
+  const _RatingView({
+    required this.rating,
+    required this.isLoading,
+    required this.onStarTap,
+    required this.onSubmit,
+    required this.onReset,
+  });
 
-  final RateAppState state;
+  final int rating;
+  final bool isLoading;
+  final ValueChanged<int>? onStarTap;
+  final VoidCallback? onSubmit;
+  final VoidCallback? onReset;
 
   @override
   Widget build(BuildContext context) {
-    final cubit = context.read<RateAppCubit>();
-    final isLoading = state.status == RateAppStatus.loading;
-
     return Column(
       mainAxisSize: MainAxisSize.min,
       spacing: 24,
@@ -107,16 +133,13 @@ class _RatingView extends StatelessWidget {
             color: RateAppColors.navy,
           ),
         ),
-        _StarsRow(
-          rating: state.rating,
-          onStarTap: isLoading ? null : cubit.setRating,
-        ),
+        _StarsRow(rating: rating, onStarTap: onStarTap),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           spacing: 10,
           children: [
             ElevatedButton(
-              onPressed: (state.rating == 0 || isLoading) ? null : cubit.submit,
+              onPressed: onSubmit,
               style: ElevatedButton.styleFrom(
                 backgroundColor: RateAppColors.navy,
                 foregroundColor: Colors.white,
@@ -143,7 +166,7 @@ class _RatingView extends StatelessWidget {
                   : const Text('Submit rating'),
             ),
             ElevatedButton(
-              onPressed: isLoading ? null : cubit.reset,
+              onPressed: onReset,
               style: ElevatedButton.styleFrom(
                 backgroundColor: RateAppColors.cardBlue,
                 foregroundColor: RateAppColors.navy,
@@ -169,13 +192,13 @@ class _RatingView extends StatelessWidget {
 }
 
 class _SuccessView extends StatelessWidget {
-  const _SuccessView();
+  const _SuccessView({required this.rating, required this.onRateAgain});
+
+  final int rating;
+  final VoidCallback onRateAgain;
 
   @override
   Widget build(BuildContext context) {
-    final cubit = context.read<RateAppCubit>();
-    final rating = context.select((RateAppCubit c) => c.state.rating);
-
     return Column(
       mainAxisSize: MainAxisSize.min,
       spacing: 24,
@@ -193,7 +216,7 @@ class _SuccessView extends StatelessWidget {
         SizedBox(
           width: double.infinity,
           child: ElevatedButton(
-            onPressed: cubit.reset,
+            onPressed: onRateAgain,
             style: ElevatedButton.styleFrom(
               backgroundColor: RateAppColors.navy,
               foregroundColor: Colors.white,
