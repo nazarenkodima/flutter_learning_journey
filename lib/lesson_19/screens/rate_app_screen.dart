@@ -4,40 +4,29 @@ import 'package:flutter_learning_journey/lesson_19/bloc/rate_app_cubit.dart';
 import 'package:flutter_learning_journey/lesson_19/rate_app_colors.dart';
 import 'package:go_router/go_router.dart';
 
-class RateAppScreen extends StatefulWidget {
+class RateAppScreen extends StatelessWidget {
   const RateAppScreen({super.key});
 
   @override
-  State<RateAppScreen> createState() => _RateAppScreenState();
-}
-
-class _RateAppScreenState extends State<RateAppScreen> {
-  late final RateAppCubit _cubit;
-
-  @override
-  void initState() {
-    super.initState();
-    _cubit = context.read<RateAppCubit>();
-  }
-
-  @override
-  void dispose() {
-    if (_cubit.state.status != RateAppStatus.success) {
-      _cubit.reset();
-    }
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: RateAppColors.background,
-      appBar: AppBar(
-        title: const Text('Flutter lab'),
-        backgroundColor: RateAppColors.navy,
-        foregroundColor: Colors.white,
-      ),
-      body: BlocConsumer<RateAppCubit, RateAppState>(
+    return PopScope(
+      canPop: false,
+      onPopInvokedWithResult: (didPop, _) {
+        if (didPop) return;
+        final cubit = context.read<RateAppCubit>();
+        if (cubit.state.status != RateAppStatus.success) {
+          cubit.reset();
+        }
+        context.pop();
+      },
+      child: Scaffold(
+        backgroundColor: RateAppColors.background,
+        appBar: AppBar(
+          title: const Text('Flutter lab'),
+          backgroundColor: RateAppColors.navy,
+          foregroundColor: Colors.white,
+        ),
+        body: BlocConsumer<RateAppCubit, RateAppState>(
         listenWhen: (prev, curr) =>
             prev.status != curr.status && curr.status == RateAppStatus.success,
         listener: (context, state) {
@@ -90,7 +79,8 @@ class _RateAppScreenState extends State<RateAppScreen> {
           );
         },
       ),
-    );
+    ),
+  );
   }
 }
 
