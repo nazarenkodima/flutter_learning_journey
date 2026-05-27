@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_learning_journey/lesson_22/error_handling_homework/data/repository/entity/user_entity.dart';
 import 'package:flutter_learning_journey/lesson_22/error_handling_homework/presentation/cubit/user_profile_cubit.dart';
 import 'package:flutter_learning_journey/lesson_22/error_handling_homework/presentation/cubit/user_profile_state.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 
 class UserProfileHomeworkScreen extends StatefulWidget {
   const UserProfileHomeworkScreen({super.key});
@@ -35,7 +36,10 @@ class _UserProfileHomeworkScreenState extends State<UserProfileHomeworkScreen> {
             //Error State
             UserProfileError() => _ErrorWidget(
               message: state.message,
-              onRetry: () => context.read<UserProfileCubit>().loadUserProfile(),
+              onRetry: () {
+                context.read<UserProfileCubit>().loadUserProfile();
+                Sentry.logger.fmt.info("Test log from %s", ["Sentry"]);
+              },
             ),
           };
         },
