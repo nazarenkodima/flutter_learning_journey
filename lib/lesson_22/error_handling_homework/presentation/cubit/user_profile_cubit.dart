@@ -10,8 +10,13 @@ class UserProfileCubit extends Cubit<UserProfileState> {
   Future<void> loadUserProfile({bool shouldFail = true}) async {
     emit(UserProfileLoading());
 
-    final user = await repository.getUserProfile(shouldFail);
-
-    emit(UserProfileLoaded(user));
+    try {
+      final user = await repository.getUserProfile(shouldFail);
+      emit(UserProfileLoaded(user));
+    } on CustomServerError catch (e) {
+      emit(UserProfileError(e.message));
+    } catch (_) {
+      emit(UserProfileError('Сталася непередбачена помилка'));
+    }
   }
 }

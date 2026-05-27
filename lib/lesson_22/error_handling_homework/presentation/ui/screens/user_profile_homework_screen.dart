@@ -33,9 +33,48 @@ class _UserProfileHomeworkScreenState extends State<UserProfileHomeworkScreen> {
             UserProfileLoaded() => _LoadedProfileWidget(user: state.user),
 
             //Error State
-            // TODO(student): Need implement error state
+            UserProfileError() => _ErrorWidget(
+              message: state.message,
+              onRetry: () => context.read<UserProfileCubit>().loadUserProfile(),
+            ),
           };
         },
+      ),
+    );
+  }
+}
+
+class _ErrorWidget extends StatelessWidget {
+  const _ErrorWidget({required this.message, required this.onRetry});
+
+  final String message;
+  final VoidCallback onRetry;
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.all(24.0),
+        child: Column(
+          mainAxisAlignment: .center,
+          spacing: 16,
+          children: [
+            Image.asset('assets/images/1.png', height: 120),
+            Text(
+              message,
+              textAlign: TextAlign.center,
+              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+            ),
+            ElevatedButton(
+              onPressed: onRetry,
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.deepOrange,
+                foregroundColor: Colors.white,
+              ),
+              child: const Text('Спробувати знову'),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -61,11 +100,7 @@ class _LoadedProfileWidget extends StatelessWidget {
                 const CircleAvatar(
                   radius: 50,
                   backgroundColor: Colors.blue,
-                  child: Icon(
-                    Icons.person,
-                    size: 50,
-                    color: Colors.white,
-                  ),
+                  child: Icon(Icons.person, size: 50, color: Colors.white),
                 ),
                 const SizedBox(height: 16),
                 Text(

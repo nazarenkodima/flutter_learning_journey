@@ -9,3 +9,9 @@ final class UserProfileLoaded implements UserProfileState {
 
   final UserEntity user;
 }
+
+final class UserProfileError implements UserProfileState {
+  UserProfileError(this.message);
+
+  final String message;
+}
