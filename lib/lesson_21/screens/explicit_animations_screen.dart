@@ -50,7 +50,7 @@ class _ExplicitAnimationsScreenState extends State<ExplicitAnimationsScreen>
     _rotateAnim = Tween<double>(
       begin: 0,
       end: _oneTurn,
-    ).animate(_ballController);
+    ).chain(CurveTween(curve: Curves.easeOut)).animate(_ballController);
   }
 
   void _onBallTap() {
