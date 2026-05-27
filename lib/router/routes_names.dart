@@ -7,4 +7,5 @@ abstract class RouteNames {
   static const String lesson18Cubit = 'lesson18Cubit';
   static const String lesson18Bloc = 'lesson18Bloc';
   static const String lesson19RateApp = 'lesson19RateApp';
+  static const String lesson22ErrorHandling = 'lesson22ErrorHandling';
 }
