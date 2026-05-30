@@ -54,7 +54,8 @@ class _ExplicitAnimationsScreenState extends State<ExplicitAnimationsScreen>
   }
 
   void _onBallTap() {
-    _ballController.forward(from: 0);
+    _ballController.reset();
+    _ballController.forward();
   }
 
   @override
