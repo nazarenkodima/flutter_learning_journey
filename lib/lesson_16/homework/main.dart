@@ -12,7 +12,9 @@ import 'package:flutter_learning_journey/lesson_22/error_handling_homework/data/
 import 'package:flutter_learning_journey/lesson_22/error_handling_homework/presentation/cubit/user_profile_cubit.dart';
 import 'package:flutter_learning_journey/lesson_22/error_handling_homework/presentation/ui/screens/user_profile_homework_screen.dart';
 import 'package:flutter_learning_journey/lesson_21/screens/explicit_animations_screen.dart';
-import 'package:flutter_learning_journey/lesson_25/data/repository/silpo_cheque_repository.dart';
+import 'package:flutter_learning_journey/lesson_25/data/api/cheque_api.dart';
+import 'package:flutter_learning_journey/lesson_25/data/repository/cheque_repository.dart';
+import 'package:flutter_learning_journey/lesson_25/data/source/cheque_source.dart';
 import 'package:flutter_learning_journey/lesson_25/presentation/cubit/cheque_cubit.dart';
 import 'package:flutter_learning_journey/lesson_25/presentation/ui/screens/json_parsing_screen.dart';
 import 'package:flutter_learning_journey/router/routes_names.dart';
@@ -112,7 +114,8 @@ final router = GoRouter(
           name: RouteNames.lesson25Json,
           builder: (context, state) => BlocProvider(
             create: (_) =>
-                ChequeCubit(SilpoChequeRepository())..loadCheque(),
+                ChequeCubit(SilpoChequeRepository(ChequeSource(ChequeApi())))
+                  ..loadCheque(),
             child: const JsonParsingScreen(),
           ),
         ),

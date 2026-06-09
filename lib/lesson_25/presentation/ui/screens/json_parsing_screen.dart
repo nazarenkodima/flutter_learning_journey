@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_learning_journey/lesson_25/data/entity/cheque_entity.dart';
 import 'package:flutter_learning_journey/lesson_25/presentation/cubit/cheque_cubit.dart';
 import 'package:flutter_learning_journey/lesson_25/presentation/cubit/cheque_state.dart';
 
@@ -22,14 +23,36 @@ class JsonParsingScreen extends StatelessWidget {
         builder: (context, state) {
           return switch (state) {
             ChequeLoading() => const Center(child: CircularProgressIndicator()),
-            ChequeLoaded() => SingleChildScrollView(
-              padding: const EdgeInsets.all(16),
-              child: Text(state.json),
-            ),
+            ChequeLoaded(json: final json) => _ChequeView(json),
             ChequeError() => Center(child: Text(state.message)),
           };
         },
       ),
+    );
+  }
+}
+
+class _ChequeView extends StatelessWidget {
+  const _ChequeView(this.cheque);
+
+  final ChequeEntity cheque;
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView(
+      padding: const EdgeInsets.all(16),
+      children: [
+        Text(
+          'Чек #${cheque.chequeId}',
+          style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+        ),
+
+        const Divider(),
+        ...cheque.items.map((name) => Text('• $name')),
+        const Divider(),
+        Text('Передбачення: ${cheque.prediction}'),
+        Text('Сума: ${cheque.totalAmount} грн'),
+      ],
     );
   }
 }

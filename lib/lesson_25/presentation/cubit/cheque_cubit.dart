@@ -1,5 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_learning_journey/lesson_25/data/repository/silpo_cheque_repository.dart';
+import 'package:flutter_learning_journey/lesson_25/data/repository/cheque_repository.dart';
 import 'package:flutter_learning_journey/lesson_25/presentation/cubit/cheque_state.dart';
 
 class ChequeCubit extends Cubit<ChequeState> {
@@ -11,7 +11,7 @@ class ChequeCubit extends Cubit<ChequeState> {
     emit(ChequeLoading());
 
     try {
-      final json = await repository.getChequeJson();
+      final json = await repository.getCheque();
       emit(ChequeLoaded(json));
     } catch (_) {
       emit(ChequeError('Не вдалося завантажити чек'));
