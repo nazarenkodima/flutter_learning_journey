@@ -37,22 +37,79 @@ class _ChequeView extends StatelessWidget {
 
   final ChequeEntity cheque;
 
+  static const _mono = TextStyle(fontFamily: 'monospace', fontSize: 14);
+
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      padding: const EdgeInsets.all(16),
-      children: [
-        Text(
-          'Чек #${cheque.chequeId}',
-          style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+    return SingleChildScrollView(
+      padding: const EdgeInsets.symmetric(vertical: 32, horizontal: 24),
+      child: Center(
+        child: Container(
+          width: 320,
+          padding: const EdgeInsets.all(20),
+          decoration: const BoxDecoration(
+            color: Color(0xFFFFFDF5),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black26,
+                blurRadius: 8,
+                offset: Offset(0, 4),
+              ),
+            ],
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            spacing: 12,
+            children: [
+              Image.asset('assets/images/silpo_logo.png', height: 50),
+              Text(
+                'Чек #${cheque.chequeId}',
+                textAlign: TextAlign.center,
+                style: _mono,
+              ),
+              const Divider(color: Colors.grey, thickness: 1),
+              Text(
+                'Ваша покупка',
+                style: _mono.copyWith(fontWeight: FontWeight.bold),
+              ),
+              ...cheque.items.map((name) => Text(name, style: _mono)),
+              const Divider(color: Colors.grey, thickness: 1),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Cума',
+                    style: _mono.copyWith(fontWeight: FontWeight.bold),
+                  ),
+                  Text(
+                    '${cheque.totalAmount} грн',
+                    style: _mono.copyWith(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16,
+                    ),
+                  ),
+                ],
+              ),
+              const Divider(color: Colors.grey, thickness: 1),
+              Text(
+                'Передбачення для вас:',
+                textAlign: TextAlign.center,
+                style: _mono.copyWith(fontWeight: FontWeight.bold),
+              ),
+              Text(
+                '"${cheque.prediction}"',
+                textAlign: TextAlign.center,
+                style: _mono.copyWith(fontStyle: FontStyle.italic),
+              ),
+              Text(
+                'Дякуємо за покупку! 🖤',
+                textAlign: TextAlign.center,
+                style: _mono,
+              ),
+            ],
+          ),
         ),
-
-        const Divider(),
-        ...cheque.items.map((name) => Text('• $name')),
-        const Divider(),
-        Text('Передбачення: ${cheque.prediction}'),
-        Text('Сума: ${cheque.totalAmount} грн'),
-      ],
+      ),
     );
   }
 }
