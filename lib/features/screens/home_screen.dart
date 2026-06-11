@@ -53,6 +53,10 @@ class HomeScreen extends StatelessWidget {
               title: 'Lesson 22: Error handling',
               onTap: () => context.goNamed(RouteNames.lesson22ErrorHandling),
             ),
+            FeatureCard(
+              title: 'Lesson 25: JSON Parsing',
+              onTap: () => context.goNamed(RouteNames.lesson25Json),
+            ),
           ],
         ),
       ),
